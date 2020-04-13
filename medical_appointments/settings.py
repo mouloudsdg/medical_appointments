@@ -24,7 +24,6 @@ SECRET_KEY = 'io^!-w^!u%!@+q&t4^#lfxio#kobpo#kkkf0tl0s+ba5qh56u4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -38,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'appointment.apps.AppointmentConfig'
+    'appointment.apps.AppointmentConfig',
+    'patient.apps.PatientConfig',
 ]
 
 MIDDLEWARE = [
