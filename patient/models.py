@@ -8,6 +8,7 @@ class Patient(models.Model):
     adresse = models.CharField(max_length=255,blank=True)
     telephone = models.CharField(max_length=255)
     mail = models.EmailField(blank=True)
+    info = models.TextField(blank=True)
 
     class Meta:
         ordering = ["nom"]

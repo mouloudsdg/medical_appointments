@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Patients{% endblock %}
+
+{% block header %}
+<header class="jumbotron my-4" style="background-color: white;">
+  <h1 class="display-5">Liste des patients</h1>
+  <p class="lead">{{ patients|length }} Patients</p>
+  <a href="{% url 'patient:add' %}" class="btn btn-primary "><i class="fas fa-plus-circle" style="margin-right: 7px;"></i>Nouveau</a>
+</header>
+{% endblock %}
+
+{% block content%}
+<table class="table">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">E-mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for patient in patients %}
+  <tr onclick="location.href='/patient/modif/{{patient.id}}'" class="lien", style="cursor: pointer;">
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{ patient.nom }}</td>
+      <td>{{ patient.prenom }}</td>
+      <td>{{ patient.adresse }}</td>
+      <td>{{ patient.telephone }}</td>
+      <td>{{ patient.mail }}</td>
+    </tr>
+     
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Patient | Nouveau{% endblock %}
+{% block header %}
+<header class="jumbotron my-4" style="background-color: white;">
+    <h1 class="display-5">Nouveau patient</h1>
+  </header>
+{% endblock %}
+
+{% block content%}
+
+<form class="form-inline" action="{% url 'patient:add' %}" method="post">
+  <span class="col-md-1"></span>
+  <input type="text" class="form-control col-md-3" placeholder="Nom" value="{{form.data.nom}}" name ="nom" id="nom" required maxlength="100" minlength="2">
+  <span class="col-md-2"></span>
+  <input type="text" class="form-control col-md-3" placeholder="Prenom" value="{{form.data.prenom}}" name ="prenom" id="prenom" required maxlength="100" minlength="2">
+  <span class="col-md-3"></span>
+  <span class="col-md-1"></span>
+  <input type="text" class="form-control col-md-3" placeholder="Adresse" value="{{form.data.adresse}}" name ="adresse" id="adresse" style="margin-top:30px;" maxlength="100" minlength="5">
+  <span class="col-md-2"></span>
+  <input type="tel" class="form-control col-md-3" placeholder="Numéro de télephone" value="{{form.data.telephone}}" name ="telephone" id="telephone" style="margin-top:30px;" required maxlength="100" minlength="5">
+  <span class="col-md-3"></span>
+  <span class="col-md-1"></span>
+  <input type="email" class="form-control col-md-3" placeholder="Adresse mail" value="{{form.data.mail}}" name ="mail" id="mail" style="margin-top:30px;" maxlength="100" minlength="5">
+  <span class="col-md-8"></span>
+  <span class="col-md-1"></span>
+  <textarea class="form-control col-md-4"  placeholder="Informations médicale" name="info" id="info" rows="6" style="margin-top:30px;">{{form.data.info}}</textarea>
+  <span class="col-md-2"></span>
+  <button  type="submit" class="btn btn-outline-success" style="margin-top:50px;" id="Enregistrer">Enregistrer</button>
+
+</form>
+
+{% endblock %}

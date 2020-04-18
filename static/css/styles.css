@@ -1,0 +1,22 @@
+.lien:hover
+{
+  background: #bbbbbb;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.footer {
+    margin-top: 3em;
+    color: rgba(0,0,0,0.6);
+}
+
+.footer:before {
+    content: " ";
+    display: block;
+    height: 1px;
+    background-color: #1ce;
+    width: 10%;
+    margin: 0.5em auto;
+}
