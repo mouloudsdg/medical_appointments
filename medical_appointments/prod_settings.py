@@ -9,6 +9,4 @@ DATABASES['default'] = dj_database_url.config()
 MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-ALLOWED_HOSTS = ['acme-ldn.herokuapp.com']
-
+ALLOWED_HOSTS = ['dr-acme.herokuapp.com']
