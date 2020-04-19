@@ -1,1 +1,1 @@
-web: gunicorn acme.wsgi --log-file -
+web: gunicorn medical_appointments.wsgi --log-file -
