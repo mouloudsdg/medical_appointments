@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Rendez-vous{% endblock %}
+
+{% block header %}
+<header class="jumbotron my-4" style="background-color: white;">
+  <h1 class="display-5">Liste des Rendez-vous</h1>
+  <p class="lead">{{ rdvs|length }} rendez-vous</p>
+  <a href="{% url 'appointment:add' %}" class="btn btn-primary "><i class="fas fa-plus-circle" style="margin-right: 7px;"></i>Nouveau</a>
+</header>
+{% endblock %}
+
+
+{% block content%}
+
+<form class="form-inline" action="{% url 'appointment:list' %}" method="post" style="margin-bottom: 20px; padding-left: 60%;">
+  {% csrf_token %}
+
+  <input type="date" class="form-control col-md-5" value="{{form.data.date|date:'Y-m-d'}}" name="date" placeholder="Date rendez-vous" id="date">
+  <select class="form-control col-md-5" name="patient" id="patient" style="margin-left: 10px;">
+      <option value="">Tous les patients...</option>
+      {% for p in form.fields.patient.queryset %}
+    <option value="{{p.id}}"{% if p == form.data.patient  %} selected="selected" {% endif%}>{{p}}</option>
+      {% endfor %}
+  </select>
+  <button type="submit" class="btn btn-outline-info" id="modifier2" style="margin-left: 10px;"><i class="fa fa-search"></i></button>
+  </form>
+
+<table class="table">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Heure</th>
+      <th scope="col">Patient</th>
+      <th scope="col">Objet</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for rdv in rdvs %}
+  <tr onclick="location.href='/rdv/modif/{{rdv.id}}'" class="lien", style="cursor: pointer;">
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{ rdv.date|date:'d-m-Y' }}</td>
+      <td>{{ rdv.heure|time:'H:i' }}</td>
+      <td>{{ rdv.patient }}</td>
+      <td>{{ rdv.objet }}</td>
+    </tr>
+     
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+

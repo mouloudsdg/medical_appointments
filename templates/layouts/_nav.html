@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Dr. Acme</a>
+    <a class="navbar-brand" href="/">Dr. Acme</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Acceuil
+          <a class="nav-link" href="/">Acceuil
             <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -19,11 +19,11 @@
             Rendez-vous
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Liste des rendez-vous</a>
-            <a class="dropdown-item" href="#">Ajouter rendez-vous</a>
+            <a class="dropdown-item" href="{% url 'appointment:list'%}">Liste des rendez-vous</a>
+            <a class="dropdown-item" href="{% url 'appointment:add' %}">Ajouter rendez-vous</a>
         </li>
       </ul>
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Déconnxion</button>
+      <button onclick="location.href='/accounts/logout'" class="btn btn-outline-info my-2 my-sm-0" type="submit">Déconnxion</button>
     </div>
   </div>
 </nav>

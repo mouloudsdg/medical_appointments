@@ -1,7 +1,12 @@
 from django.urls import path
 from . import views
 
+app_name = "appointment"
+
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("rdv/<int:id>/",views.show_rdv, name="show_rdv"),
+    path("", views.lst, name="list"),
+    path("suppr/<int:id>/",views.delt, name="delete"),
+    path("ajout",views.add, name="add"),
+    path("modif/<int:id>/",views.put, name="put"),
+
 ]

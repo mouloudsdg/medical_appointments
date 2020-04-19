@@ -9,6 +9,7 @@
 {% block content%}
 
 <form class="form-inline" action="{% url 'patient:add' %}" method="post">
+    {% csrf_token %}
   <span class="col-md-1"></span>
   <input type="text" class="form-control col-md-3" placeholder="Nom" value="{{form.data.nom}}" name ="nom" id="nom" required maxlength="100" minlength="2">
   <span class="col-md-2"></span>

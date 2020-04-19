@@ -1,20 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, QueryDict
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_GET,require_http_methods
-from django.views.decorators.csrf import csrf_exempt
 from .models import Patient
 from .forms import PatientForm
 from django.http import Http404
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required
 @require_GET
 def lst(request):
     patients = Patient.objects.all()
     return render(request,"patient/list.html", {"patients" : patients})
 
-
+@login_required
 @require_GET
 def detail(request, id):
     try:
@@ -23,6 +23,7 @@ def detail(request, id):
         raise Http404("Patient does not exist")
     return HttpResponse(patient)
 
+@login_required
 @require_GET
 def delt(request, id):
     try:
@@ -31,7 +32,7 @@ def delt(request, id):
         raise Http404("Patient does not exist")
     return HttpResponseRedirect("/patient/")
 
-@csrf_exempt
+@login_required
 @require_http_methods(["GET","POST"])
 def add(request):
     if request.method == "POST":
@@ -50,7 +51,7 @@ def add(request):
         form = PatientForm()
     return render(request,"patient/ajout.html", {"form": form})
 
-
+@login_required
 @require_http_methods(["GET","POST"])
 def put(request, id):
     try:

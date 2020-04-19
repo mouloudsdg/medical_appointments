@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Rendez-vous | Nouveau{% endblock %}
+{% block header %}
+<header class="jumbotron my-4" style="background-color: white;">
+    <h1 class="display-5">Nouveau Rendez-vous</h1>
+  </header>
+{% endblock %}
+
+{% block content%}
+
+<form class="form-inline" action="{% url 'appointment:add' %}" method="post">
+    {% csrf_token %}
+    <span class="col-md-1"></span>
+    <input type="date" class="form-control col-md-3" value="{{form.data.date}}" name="date" placeholder="Date rendez-vous" id="date" required>
+    <span class="col-md-2"></span>
+    <input type="time" class="form-control col-md-3" value="{{form.data.heure}}" name="heure" placeholder="Heure rendez-vous" id="heure" required>
+    <span class="col-md-3"></span>
+    <span class="col-md-1"></span>
+    <select class="form-control col-md-3" name="patient" id="patient" style="margin-top:30px;" required>
+        <option value="" disabled selected>Choisir un patient...</option>
+        {% for p in form.fields.patient.queryset %}
+      <option value="{{p.id}}"{% if p == form.data.patient  %} selected="selected" {% endif%}>{{p}}</option>
+        {% endfor %}
+    </select>
+    <span class="col-md-2"></span>
+    <input type="text" class="form-control col-md-3" value="{{form.data.objet}}" placeholder="Objet de la visite" name="objet" id="objet" style="margin-top:30px;" maxlength="100" minlength="1">
+    <span class="col-md-3"></span>
+    <span class="col-md-1"></span>
+
+    <button type="submit" class="btn btn-outline-success" style="margin-top:50px;" id="modifier2">Sauvegarder</button>
+    
+
+  </form>
+
+{% endblock %}
